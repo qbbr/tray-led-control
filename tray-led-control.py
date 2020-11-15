@@ -57,15 +57,6 @@ class TaskBarIcon(wx.adv.TaskBarIcon):
             # hex_color = "%02x%02x%02x" % rgb[:3]
             color = "%d.%d.%d" % rgb[:3]
             send("c %s" % color)
-            # menu = event.EventObject
-            # menu_item = menu.FindItemById(event.Id)
-            # menu_item.SetBackgroundColour(rgb)
-            # menu_item.SetItemLabel("xDD")
-            # menu_item.ItemLabel = "xD"
-            # menu.Remove(event.Id)
-            # menu_item_tc = menu_item.GetTextColour()
-            # menu_item_tc.Set(rgb[0], rgb[1], rgb[2])
-            # menu_item.SetTextColour(menu_item_tc)
         dlg.Destroy()
 
     def on_set_mode(self, event):
@@ -123,9 +114,13 @@ class MyApplication(wx.Frame):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Tray App for control LED strip WS2812B over Arduino serial port.")
     parser.add_argument("--port", help="arduino serial port (default: %s)" % const.ARDUINO_PORT, default=const.ARDUINO_PORT)
+    parser.add_argument("--debug", help="enable debug output to console", action='count', default=0)
     args = parser.parse_args()
 
     const.ARDUINO_PORT = args.port
+
+    if args.debug:
+        const.DEBUG_CONSOLE_OUTPUT = True
 
     init_serial()
     start_reading_loop()

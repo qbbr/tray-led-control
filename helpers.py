@@ -1,6 +1,6 @@
-from const import DEBUG_CONSOLE_OUTPUT
+import const
 
 
 def d(data):
-    if DEBUG_CONSOLE_OUTPUT:
+    if const.DEBUG_CONSOLE_OUTPUT:
         print(data)

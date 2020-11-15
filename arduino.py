@@ -32,7 +32,7 @@ def parseLine(line):
     if len(line) and line[0] == "@":
         v = line[1:].split(": ")
         set_default_value(v[0], int(v[1]))
-    print(line)
+    d(line)
 
 
 def receive():
