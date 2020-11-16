@@ -21,3 +21,5 @@ see [requirements.txt](requirements.txt) for more datail
 # see help for more detail
 ./tray-led-control.py -h
 ```
+
+![qbbr-arduino-tray-led-control](https://i.imgur.com/H0MsBGw.gif)
