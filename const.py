@@ -1,9 +1,11 @@
+import os
+
 DEBUG_CONSOLE_OUTPUT = False
 ARDUINO_PORT = "/dev/ttyUSB0"
 ARDUINO_BAUDRATE = 115200
 ARDUINO_TIMEOUT = 5
 TRAY_TOOLTIP = "LED strip control"
-TRAY_ICON = "./tray-icon.png"
+TRAY_ICON = os.path.dirname(__file__) + "/tray-icon.png"
 
 CURRENT_COLOR = [255, 255, 255]
 CURRENT_MODE = 0
