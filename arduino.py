@@ -26,6 +26,8 @@ def set_default_value(key, val):
         const.CURRENT_BRIGHTNESS = val
     elif key == 'SPEED':
         const.CURRENT_SPEED = val
+    elif key == 'MICROPHONE_MODE':
+        const.CURRENT_MICROPHONE_MODE = val
 
 
 def parseLine(line):

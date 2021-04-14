@@ -28,6 +28,7 @@ class TaskBarIcon(wx.adv.TaskBarIcon):
         self.create_menu_item(menu, "Set mode", -1, self.on_set_mode)
         self.create_menu_item(menu, "Set brightness", -1, self.on_set_brightness)
         self.create_menu_item(menu, "Set speed", -1, self.on_set_speed)
+        self.create_menu_item(menu, "Set microphone mode", -1, self.on_set_microphone_mode)
         self.create_menu_item(menu, "Send custom CMD", -1, self.on_send_custom_cmd)
         menu.AppendSeparator()
         self.create_menu_item(menu, "Exit", -1, self.on_exit)
@@ -83,6 +84,14 @@ class TaskBarIcon(wx.adv.TaskBarIcon):
         if dlg.ShowModal() == wx.ID_OK:
             const.CURRENT_SPEED = dlg.GetValue()
             send("s %s" % const.CURRENT_SPEED)
+        dlg.Destroy()
+
+    def on_set_microphone_mode(self, event):
+        dlg = wx.SingleChoiceDialog(self.myapp_frame, "Microphone", "Set microphone mode", ['Enable', 'Disable'])
+        if dlg.ShowModal() == wx.ID_OK:
+            choice = dlg.GetStringSelection()
+            const.CURRENT_MICROPHONE_MODE = 1 if choice == 'Enable' else 0
+            send("t %s" % const.CURRENT_MICROPHONE_MODE)
         dlg.Destroy()
 
     def on_send_custom_cmd(self, event):
